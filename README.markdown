@@ -38,11 +38,11 @@ Usage
 `defsyntax` defines a new syntax. `name` is a symbol and `options` is
 a list of option.
 
-If option formed `(:macro-character char fn &optional
+If option formed `(:macro-char char fn &optional
 non-terminating-p)`, the syntax engine will call `set-macro-character`
 with the arguments when enabling the syntax.
 
-If option formed `(:dispatch-macro-character disp-ch sub-ch fn)`, the
+If option formed `(:dispatch-macro-char disp-ch sub-ch fn)`, the
 syntax engine will call `set-dispatch-macro-character` with the
 arguments when enabling the syntax.
 
@@ -50,12 +50,12 @@ Here is an example:
 
     ;; Define cl-interpol syntax
     (defsyntax interpol-syntax
-      (:dispatch-macro-character #\# #\? #'cl-interpol::interpol-reader))
+      (:dispatch-macro-char #\# #\? #'cl-interpol::interpol-reader))
 
 This code is equivalent to:
 
     (defvar interpol-syntax
-        `((:dispatch-macro-character #\# #\? ,#'cl-interpol::interpol-reader)))
+        `((:dispatch-macro-char #\# #\? ,#'cl-interpol::interpol-reader)))
 
 If you don't want to use `defsyntax` in some reasons, use this code
 instead.
